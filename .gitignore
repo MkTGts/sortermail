@@ -1,0 +1,4 @@
+__pycache__
+data/imported/*.csv
+data/imported/unsubs.txt
+data/file_new.txt
