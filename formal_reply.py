@@ -1,12 +1,12 @@
-def rem_uns():  # удаление адресов отписавшихся 
+def rem_uns():  # удаление адресов отписавшихся
     with open('data/imported/unsubs.txt', 'r', encoding='utf-8') as file:  # откр файл с отписками
-        uns = file.readlines()
-        dct_uns = {}
-        for st in uns:
+        uns = file.readlines()  # список со строками из файла
+        dct_uns = {}  # словарь под значения отписавшихся
+        for st in uns:  # итерация по списку значений файла отписавшихся
+            # приведение строки <<маил;имя>> к спику [маил, имя]
             s = st.strip().split(';')
-            if len(s) == 2:
+            if len(s) == 2:  # если не пустая строка
                 dct_uns[s[0]] = s[1]
-        
 
     with open('data/file_new.txt', 'r', encoding='utf-8') as file:  # откр файл с андресами
         mails = file.readlines()
@@ -27,11 +27,9 @@ def rem_uns():  # удаление адресов отписавшихся
         for k, v in dct_mails.items():
             file.write(k + ';' + v + '\n')
 
-     
-        
+    # with open('data/imported/unsubs.txt', 'w', encoding='utf-8') as file:
+        # for k,v in dct_uns.items():
+            # file.write(f'{k};{v}')
 
-    #with open('data/imported/unsubs.txt', 'w', encoding='utf-8') as file:
-        #for k,v in dct_uns.items():
-            #file.write(f'{k};{v}')
 
 rem_uns()
