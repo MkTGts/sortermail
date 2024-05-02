@@ -54,7 +54,7 @@ def importable(file_old, names=False, flag=False) -> list:
 def writer_list(res_list=importable(file_old), file_name='data/file_new.txt') -> None:
     '''
     Функция записывает в файл file_name значения res_list
-    По дефолту то что функция importable достала из csv файла
+    По дефолту то что функция importable достала из txt файла
     '''
     with open(file_name, 'w', encoding='utf-8') as file:
         for em, name in res_list.items():  # итерация по переданным значениям

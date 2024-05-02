@@ -1,4 +1,9 @@
-def rem_uns():  # удаление адресов отписавшихся
+from datetime import date, datetime
+
+def rem_uns(wrt_stat=True):  # удаление адресов отписавшихся
+    '''
+    Если функции подать wrt_stat=True, записывает также статистику количества релевантных адресов на дату исполнения
+    '''
     with open('data/imported/unsubs.txt', 'r', encoding='utf-8') as file:  # откр файл с отписками
         uns = file.readlines()  # список со строками из файла
         dct_uns = {}  # словарь под значения отписавшихся
@@ -26,10 +31,27 @@ def rem_uns():  # удаление адресов отписавшихся
     with open('data/file_new.txt', 'w', encoding='utf-8') as file:
         for k, v in dct_mails.items():
             file.write(k + ';' + v + '\n')
+    
+    if wrt_stat:
+        stat_count(dct_mails)
+    
 
-    # with open('data/imported/unsubs.txt', 'w', encoding='utf-8') as file:
-        # for k,v in dct_uns.items():
-            # file.write(f'{k};{v}')
+
+
+
+def stat_count(dct_mails):
+    '''
+    Функция записывает результирующее количетсво адресов, после отсева с ошибками и отписавшихся
+    В формате дата - кол-во
+    '''
+    with open('data/count_mail.txt', 'a+', encoding='utf-8') as file:
+        s = f'{datetime.now().strftime('%d.%m.%Y %H:%M:%S')}  -  {len(dct_mails)} адресов \n'
+        file.write(s)
+        print(s)
+    
+
+    
+ 
 
 
 rem_uns()

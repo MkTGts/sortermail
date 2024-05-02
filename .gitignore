@@ -3,3 +3,4 @@ data/imported/*.csv
 data/imported/unsubs.txt
 data/file_new.txt
 data/imported/status_ok.txt
+data/count_mail.txt
